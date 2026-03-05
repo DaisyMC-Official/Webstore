@@ -1,0 +1,10 @@
+services:
+  web_server:
+    platform: linux/amd64
+    build:
+      dockerfile: Dockerfile
+    container_name: mainwebsite
+    ports:
+      - "8081:80"
+    volumes:
+      - ./application:/application
