@@ -60,17 +60,47 @@ body {
     grid-template-areas:
         "header header"
         "sidebar content"
+        "customers content"
         "footer footer";
-
     gap: var(--layout-gap);
     min-height: 100vh;
+}
+
+.avatar-container {
+    width: 80px;
+    height: 100px;        /* controls how much of the body shows */
+    overflow: hidden;
+    margin-left: 16px;
+}
+
+.custom-avatar {
+    width: 100%;
+    height: 160px;       /* taller so we can crop */
+    object-fit: cover;
+    object-position: top; /* keeps the head visible */
+}
+
+.customer {
+    position: relative;
+    display: flex;
+    align-items: start;
+}
+
+.customers {
+    grid-area: customers;
+}
+
+.name-container {
+    flex-direction: column;
+    margin-left: 16px;
 }
 
 /* =====[Panels]===== */
 .header,
 .sidebar,
 .content,
-.footer {
+.footer,
+.customers {
     background: var(--panel-bg);
     border-radius: var(--radius-panel);
     padding: var(--panel-padding);
@@ -116,8 +146,8 @@ body {
 .sidebar a {
     text-decoration: none;
     color: inherit;
-    padding: 10px 12px;
-    background: var(--nav-bg);
+    padding: 20px 12px;
+    background: #1b2532;
     border-radius: var(--radius-nav);
 }
 
@@ -160,6 +190,10 @@ body {
 
 .package-body {
     padding: var(--card-padding);
+}
+
+.package-body button {
+    background: #ffffff;
 }
 
 
