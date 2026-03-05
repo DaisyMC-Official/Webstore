@@ -18,7 +18,7 @@
 
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-                <div class="logo">MyServer Store</div>
+                <div class="logo">DaisyMC Store</div>
 
                 <div class="header-actions">
                     <button>Giftcard</button>
@@ -44,6 +44,18 @@
                     <a href="#">⭐ Ranks</a>
                     <a href="#">📦 Crates</a>
                 </nav>
+            </aside>
+
+            <aside class="customers">
+                <div class="customer">
+                    <div class="avatar-container">
+                        <img class="custom-avatar" src="https://mc-heads.net/body/ItzRepsac_/80" alt="Customer 1">
+                    </div>
+                    <div class="name-container">
+                        <h3>Top Customer</h3>
+                        <p> ItzRepsac_ </p>
+                    </div>
+                </div>
             </aside>
 
             <!-- Content -->

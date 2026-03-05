@@ -3,7 +3,7 @@ services:
     platform: linux/amd64
     build:
       dockerfile: Dockerfile
-    container_name: mainwebsite
+    container_name: webstore
     ports:
       - "8081:80"
     volumes:
