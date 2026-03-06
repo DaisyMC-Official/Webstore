@@ -18,7 +18,7 @@
 
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-                <div class="logo">DaisyMC Store</div>
+                <a href="/" class="back-button">← back to main site</a>
 
                 <div class="header-actions">
                     <button>Giftcard</button>
@@ -40,9 +40,30 @@
             <aside class="sidebar">
                 <h3>Start Shopping</h3>
                 <nav>
-                    <a class="active" href="#">🏠 Home</a>
-                    <a href="#">⭐ Ranks</a>
-                    <a href="#">📦 Crates</a>
+                    <a class="active" href="#">
+                        <div class ="head-container">
+                            <img src="https://mc-heads.net/head/879e54cbe87867d14b2fbdf3f1870894352048dfecd962846dea893b2154c85/40"> alt="Shop Head">
+                        </div>
+                        <div class="text-container">
+                            <span class="icon">Home</span>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class ="head-container">
+                            <img src="https://mc-heads.net/head/990553ec1e5a65f540a46f96492c0809c57b8860086e55b056601a8b60117662/40"> alt="Shop Head">
+                        </div>
+                        <div class="text-container">
+                            <span class="icon">Ranks</span>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class ="head-container">
+                            <img src="https://mc-heads.net/head/4611da08ca09f44268af0881e83703e5db9fa1a27192a3f9d55b8c70b7ece76e/40"> alt="Shop Head">
+                        </div>
+                        <div class="text-container">
+                            <span class="icon">Crates</span>
+                        </div>
+                    </a>
                 </nav>
             </aside>
 
@@ -64,8 +85,8 @@
                 <div class="packages">
                     <div class="package">
 
-                        <div class="package-image"
-                            style="background-image:url('rank-vip.png')">
+                        <div class="package-image">
+                            <img src="https://i.postimg.cc/G37c7QNT/minecraft-title.png" alt="VIP Rank">
                         </div>
 
                         <div class="package-body">
@@ -78,8 +99,8 @@
                     </div>
                     <div class="package">
 
-                        <div class="package-image"
-                            style="background-image:url('rank-vip.png')">
+                        <div class="package-image">
+                            <img src="https://i.postimg.cc/G37c7QNT/minecraft-title.png" alt="VIP Rank">
                         </div>
 
                         <div class="package-body">
@@ -92,8 +113,8 @@
                     </div>
                     <div class="package">
 
-                        <div class="package-image"
-                            style="background-image:url('rank-vip.png')">
+                        <div class="package-image">
+                            <img src="https://i.postimg.cc/G37c7QNT/minecraft-title.png" alt="VIP Rank">
                         </div>
 
                         <div class="package-body">
