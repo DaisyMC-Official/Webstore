@@ -96,29 +96,8 @@
 
         <div class="body">
             <div class="left-column">
-                <aside class="sidebar">
-                    <h3 class="sidebar-title">START SHOPPING</h3>
-                    <a href="/home/" class="sidebar-item">
-                        <img src="https://mc-heads.net/head/879e54cbe87867d14b2fbdf3f1870894352048dfecd962846dea893b2154c85/40">
-                        <span class="sidebar-text">Home</span>
-                    </a>
-                    <a href="/category/ranks/" class="sidebar-item active">
-                        <img src="https://mc-heads.net/head/990553ec1e5a65f540a46f96492c0809c57b8860086e55b056601a8b60117662/40">
-                        <span class="sidebar-text">Ranks</span>
-                    </a>
-                    <a href="/category/rankupgrades/" class="sidebar-item">
-                        <img src="https://mc-heads.net/head/7fe7478bcd96441c71c04349a12d429e6ee3f0bd66ec0c3c49a7aa099f166138/40">
-                        <span class="sidebar-text">Rank Upgrades</span>
-                    </a>
-                    <a href="/category/crates/" class="sidebar-item">
-                        <img src="https://mc-heads.net/head/4611da08ca09f44268af0881e83703e5db9fa1a27192a3f9d55b8c70b7ece76e/40">
-                        <span class="sidebar-text">Crates</span>
-                    </a>
-                    <a href="/category/claimblocks/" class="sidebar-item">
-                        <img src="https://mc-heads.net/head/2447326c9c2421dbb29e3dc4ec66202a0c652b0cf9a60f9f669554c7cb2eebda/40">
-                        <span class="sidebar-text">Claim Blocks</span>
-                    </a>
-                </aside>
+                <?php include '/application/include/Components/GetCategories.php'; ?>
+                
                 <div class="top-customer">
                     <h3 class="top-title">TOP CUSTOMER</h3>
                     <div class="top-player">
