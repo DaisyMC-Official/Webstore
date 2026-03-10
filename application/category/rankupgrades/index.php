@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
-    <link rel="stylesheet" href="/include/css/home.css">
+    <link rel="stylesheet" href="/include/css/upgraderank.css">
 </head>
 
 <body>
@@ -41,12 +41,12 @@
 
                 <div class="basket">
                     <div class="basket-text">
-                        <strong id="basket-name">Guest's Basket</strong><br>
-                        <span id="basket-items">click to login</span>
+                        <strong>Guest's Basket</strong><br>
+                        <span>click to login</span>
                     </div>
 
                     <div class="basket-avatar">
-                        <img src="https://mc-heads.net/body/Steve2/left" class="basket-player" id="basket-skin">
+                        <img src="https://mc-heads.net/body/Steve2/left" class="basket-player">
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
             <div class="left-column">
                 <aside class="sidebar">
                     <h3 class="sidebar-title">START SHOPPING</h3>
-                    <a href="/home/" class="sidebar-item active">
+                    <a href="/home/" class="sidebar-item">
                         <img src="https://mc-heads.net/head/879e54cbe87867d14b2fbdf3f1870894352048dfecd962846dea893b2154c85/40">
                         <span class="sidebar-text">Home</span>
                     </a>
@@ -106,7 +106,7 @@
                         <img src="https://mc-heads.net/head/990553ec1e5a65f540a46f96492c0809c57b8860086e55b056601a8b60117662/40">
                         <span class="sidebar-text">Ranks</span>
                     </a>
-                    <a href="/category/rankupgrades/" class="sidebar-item">
+                    <a href="/category/rankupgrades/" class="sidebar-item active">
                         <img src="https://mc-heads.net/head/7fe7478bcd96441c71c04349a12d429e6ee3f0bd66ec0c3c49a7aa099f166138/40">
                         <span class="sidebar-text">Rank Upgrades</span>
                     </a>
@@ -139,30 +139,71 @@
             </div>
             <main class="content">
                 <div class="welcome-card">
-                    <h2> Welcome to the DaisyMC Store</h2>
-                    <p>
-                        Here you can purchase ranks, keys, and cosmetics to use on our server. Purchasing items also helps to support server upkeep, hosting, and development.<br><br>
-                        Ranks, keys, and cosmetics can also be earned for free through in-game events, giveaways, and community activities. All purchases are processed automatically. If you run into any issues with your order, please reach out to staff and we'll get it sorted.<br><br>
-                        ✿ Thank you for supporting DaisyMC! ✿<br><br>
-                        Feel free to contact us on Discord by opening a ticket: <a href="https://discord.gg/Shub57r8wz" target="_blank" rel="noopener noreferrer">discord.gg/daisymc</a>
-                    </p>
-                    <div class="payment-banner">
-                        <img src="https://i.ibb.co/SwZ2723/paymentmethds.png" class="payment-methods">
-                        <span>+ over 45 more payment methods available.</span>
-                    </div>
-                </div>
-                <div class="info-cards">
-                    <div class="info-card refund">
-                        <h3>REFUND POLICY</h3>
-                        <p>
-                            All payments are non-refundable. Attempting a chargeback will result in permanent ban on our server.
-                        </p>
-                    </div>
-                    <div class="info-card privacy">
-                        <h3>PRIVACY POLICY</h3>
-                        <p>
-                            All information that is required on this website is not shared with any other third parties and is stored securely.
-                        </p>
+                    <h2>Rank Upgrades</h2>
+                    <div class="rank-store">
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/SK2vf4zZ/blossomrank150.png" class="rank-icon">
+                            <h3>Orchid -> Blossom</h3>
+                            <div class="rank-price"
+                                data-usd="17.99"
+                                data-gbp="13.39"
+                                data-eur="15.49"
+                                data-aud="25.44"
+                                data-cad="24.43"
+                                data-brl="93.68"
+                                data-dkk="115.76"
+                                data-nok="172.93"
+                                data-nzd="30.35"
+                                data-pln="66.05"
+                                data-sek="164.97">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Card</button>
+                            </div>
+                        </div>
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/SNd3yDh6/cloudrank150.png" class="rank-icon">
+                            <h3>Blossom -> Cloud</h3>
+                            <div class="rank-price"
+                                data-usd="60.00"
+                                data-gbp="44.67"
+                                data-eur="51.68"
+                                data-aud="84.87"
+                                data-cad="81.49"
+                                data-brl="312.47"
+                                data-dkk="386.13"
+                                data-nok="576.83"
+                                data-nzd="101.23"
+                                data-pln="220.34"
+                                data-sek="550.27">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/HLqPSNQh/daisyrank150.png" class="rank-icon">
+                            <h3>Cloud -> Daisy</h3>
+                            <div class="rank-price"
+                                data-usd="90.00"
+                                data-gbp="67.01"
+                                data-eur="77.52"
+                                data-aud="127.30"
+                                data-cad="122.24"
+                                data-brl="468.71"
+                                data-dkk="579.19"
+                                data-nok="865.24"
+                                data-nzd="151.85"
+                                data-pln="330.51"
+                                data-sek="825.40">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Card</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -198,63 +239,23 @@
         </div>
     </footer>
 
-    <div id="copy-popup">IP Copied to Clipboard!</div>
-
-    <!-- Login Modal -->
-    <div id="login-modal" class="login-modal">
-
-        <div class="login-box">
-
-            <button class="login-close" id="login-close">✕</button>
-
-            <h2>Login</h2>
-            <p class="login-sub">Enter your username to start shopping.</p>
-
-            <div class="username-field">
-
-                <img src="https://mc-heads.net/head/Steve" class="username-head" id="login-head">
-
-                <input id="login-username" type="text" placeholder="Please enter your username to continue">
-
-            </div>
-
-            <p class="bedrock-note">
-                Add <strong>.</strong> before your username to log in as a bedrock player.
-            </p>
-
-            <button class="login-button" id="login-submit">Login</button>
-
-        </div>
-
-    </div>
-
-    <!-- Basket Sidebar -->
-    <div id="basket-sidebar" class="basket-sidebar">
-
-        <div class="basket-sidebar-header">
-            <h3 id="sidebar-username">Basket</h3>
-            <button id="logout-btn">Logout</button>
-        </div>
-
-        <div class="basket-sidebar-content">
-            <ul id="cart-items-list">
-                <!-- Items will be injected here -->
-            </ul>
-            <div class="cart-total">
-                Total: $<span id="cart-total">0.00</span>
-            </div>
-            <button id="checkout-btn">Checkout</button>
-        </div>
-
-    </div>
-
-    <div id="basket-overlay" class="basket-overlay"></div>
-
     <script src="/include/JS/currency.js"></script>
     <script src="/include/JS/playercount.js"></script>
-    <script src="/include/JS/store.js"></script>
-    <script src="/include/JS/copyip.js"></script>
-    <script src="/include/JS/cart.js"></script>
+    <script>
+        document.getElementById("copy-ip").addEventListener("click", function() {
+            navigator.clipboard.writeText("play.daisymc.net");
+
+            const popup = document.getElementById("copy-popup");
+
+            popup.classList.add("show");
+
+            setTimeout(function() {
+                popup.classList.remove("show");
+            }, 2000);
+        });
+    </script>
+
+    <div id="copy-popup">IP Copied to Clipboard!</div>
 
 </body>
 
