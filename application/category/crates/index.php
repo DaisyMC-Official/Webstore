@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
-    <link rel="stylesheet" href="/include/css/upgraderank.css">
+    <link rel="stylesheet" href="/include/css/crate.css">
 </head>
 
 <body>
@@ -106,11 +106,11 @@
                         <img src="https://mc-heads.net/head/990553ec1e5a65f540a46f96492c0809c57b8860086e55b056601a8b60117662/40">
                         <span class="sidebar-text">Ranks</span>
                     </a>
-                    <a href="/category/rankupgrades/" class="sidebar-item active">
+                    <a href="/category/rankupgrades/" class="sidebar-item">
                         <img src="https://mc-heads.net/head/7fe7478bcd96441c71c04349a12d429e6ee3f0bd66ec0c3c49a7aa099f166138/40">
                         <span class="sidebar-text">Rank Upgrades</span>
                     </a>
-                    <a href="/category/crates/" class="sidebar-item">
+                    <a href="/category/crates/" class="sidebar-item active">
                         <img src="https://mc-heads.net/head/4611da08ca09f44268af0881e83703e5db9fa1a27192a3f9d55b8c70b7ece76e/40">
                         <span class="sidebar-text">Crates</span>
                     </a>
@@ -139,69 +139,32 @@
             </div>
             <main class="content">
                 <div class="welcome-card">
-                    <h2>Rank Upgrades</h2>
-                    <div class="rank-store">
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/SK2vf4zZ/blossomrank150.png" class="rank-icon">
-                            <h3>Orchid -> Blossom</h3>
-                            <div class="rank-price"
-                                data-usd="17.99"
-                                data-gbp="13.39"
-                                data-eur="15.49"
-                                data-aud="25.44"
-                                data-cad="24.43"
-                                data-brl="93.68"
-                                data-dkk="115.76"
-                                data-nok="172.93"
-                                data-nzd="30.35"
-                                data-pln="66.05"
-                                data-sek="164.97">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Card</button>
+                    <h2>Crates</h2>
+                    <div class="crate-section">
+                        <h3>Monthly Crate</h3>
+                        <div class="crate-grid">
+                            <div class="crate-card">
+                                <img src="https://i.postimg.cc/Gmjb8SH8/edited-photo120.png" alt="monthly-crate">
+                                <div class="crate-options">
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/SNd3yDh6/cloudrank150.png" class="rank-icon">
-                            <h3>Blossom -> Cloud</h3>
-                            <div class="rank-price"
-                                data-usd="60.00"
-                                data-gbp="44.67"
-                                data-eur="51.68"
-                                data-aud="84.87"
-                                data-cad="81.49"
-                                data-brl="312.47"
-                                data-dkk="386.13"
-                                data-nok="576.83"
-                                data-nzd="101.23"
-                                data-pln="220.34"
-                                data-sek="550.27">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/HLqPSNQh/daisyrank150.png" class="rank-icon">
-                            <h3>Cloud -> Daisy</h3>
-                            <div class="rank-price"
-                                data-usd="90.00"
-                                data-gbp="67.01"
-                                data-eur="77.52"
-                                data-aud="127.30"
-                                data-cad="122.24"
-                                data-brl="468.71"
-                                data-dkk="579.19"
-                                data-nok="865.24"
-                                data-nzd="151.85"
-                                data-pln="330.51"
-                                data-sek="825.40">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Card</button>
+                    </div>
+                    <div class="crate-section">
+                        <h3>Another Crate</h3>
+                        <div class="crate-grid">
+                            <div class="crate-card">
+                                <img src="https://i.postimg.cc/Gmjb8SH8/edited-photo120.png" alt="another-crate">
+                                <div class="crate-options">
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                    <button class="crate-btn">1x<br><span>$1</span></button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -56,6 +56,19 @@ body {
     }
 }
 
+@keyframes modalShake{
+    0%{transform:translateX(0);}
+    20%{transform:translateX(-6px);}
+    40%{transform:translateX(6px);}
+    60%{transform:translateX(-4px);}
+    80%{transform:translateX(4px);}
+    100%{transform:translateX(0);}
+}
+
+.login-box.shake{
+    animation: modalShake 0.35s ease;
+}
+
 
 /* Page Container */
 .container {
@@ -111,16 +124,16 @@ body {
 /* Topbar Basket */
 
 .basket{
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background:#99C6F8;
     padding: 4px 16px;
     border-radius: 14px;
-    min-width: 210px;
+    min-width: 260px;
     height: 72px;
-    overflow: hidden;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .basket:hover {
@@ -137,6 +150,10 @@ body {
 
 .basket-text strong {
     font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
 }
 
 .basket-text span {
@@ -147,9 +164,6 @@ body {
 }
 
 .basket-avatar {
-    position: absolute;
-    right: 20px;
-    bottom: -5px;
     width: 55px;
     height: 85px;
 }
@@ -775,4 +789,202 @@ body {
 
 .footer-bottom strong {
     font-weight: 900;
+}
+
+/* ===== Login Modal ===== */
+
+.login-modal{
+    position: fixed;
+    inset:0;
+    background: rgba(0,0,0,0.65);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.25s;
+    z-index:999;
+}
+
+.login-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.login-box{
+    background:#f3e7ec;
+    width:420px;
+    border-radius:12px;
+    padding:30px;
+    position:relative;
+    text-align:center;
+    color:#333;
+}
+
+.login-close{
+    position:absolute;
+    top:12px;
+    right:14px;
+    border:none;
+    background:#f4cbd8;
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.login-sub{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.username-field{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#f8e6ec;
+    border-radius:8px;
+    padding:10px;
+}
+
+.username-field input{
+    border:none;
+    background:none;
+    outline:none;
+    flex:1;
+    font-size:14px;
+}
+
+.username-head{
+    width:30px;
+    height:30px;
+}
+
+.bedrock-note{
+    font-size:12px;
+    color:#777;
+    margin:10px 0 20px;
+}
+
+.login-button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#d987a7;
+    color:white;
+    font-weight:700;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.login-button:hover{
+    opacity:0.9;
+}
+
+
+
+
+.basket-sidebar{
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background: #1e1e1e;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.basket-sidebar.active{
+    right: 0;
+}
+
+.basket-overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 0.2s;
+    z-index:998;
+}
+
+.basket-overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.basket-sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #333;
+}
+
+#logout-btn{
+    background:#ff5a5a;
+    border:none;
+    padding:8px 12px;
+    color:white;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.basket-sidebar-content ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    max-height:400px;
+    overflow-y:auto;
+}
+
+.basket-sidebar-content li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    padding:5px 0;
+    border-bottom:1px solid #333;
+}
+
+.cart-item-name{
+    flex:1;
+}
+
+.cart-item-price{
+    margin-left:10px;
+}
+
+.remove-item-btn{
+    background:#ff5a5a;
+    border:none;
+    color:white;
+    padding:3px 6px;
+    cursor:pointer;
+    border-radius:5px;
+    margin-left:10px;
+}
+
+.cart-total{
+    font-weight:bold;
+    margin-top:15px;
+    text-align:right;
+}
+
+#checkout-btn{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    background:#4caf50;
+    border:none;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:6px;
 }
