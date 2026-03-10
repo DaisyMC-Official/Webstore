@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
-    <link rel="stylesheet" href="/include/css/home.css">
+    <link rel="stylesheet" href="/include/css/rank.css">
 </head>
 
 <body>
@@ -98,11 +98,11 @@
             <div class="left-column">
                 <aside class="sidebar">
                     <h3 class="sidebar-title">START SHOPPING</h3>
-                    <a href="/home/" class="sidebar-item active">
+                    <a href="/home/" class="sidebar-item">
                         <img src="https://mc-heads.net/head/879e54cbe87867d14b2fbdf3f1870894352048dfecd962846dea893b2154c85/40">
                         <span class="sidebar-text">Home</span>
                     </a>
-                    <a href="/category/ranks/" class="sidebar-item">
+                    <a href="/category/ranks/" class="sidebar-item active">
                         <img src="https://mc-heads.net/head/990553ec1e5a65f540a46f96492c0809c57b8860086e55b056601a8b60117662/40">
                         <span class="sidebar-text">Ranks</span>
                     </a>
@@ -139,30 +139,92 @@
             </div>
             <main class="content">
                 <div class="welcome-card">
-                    <h2> Welcome to the DaisyMC Store</h2>
-                    <p>
-                        Here you can purchase ranks, keys, and cosmetics to use on our server. Purchasing items also helps to support server upkeep, hosting, and development.<br><br>
-                        Ranks, keys, and cosmetics can also be earned for free through in-game events, giveaways, and community activities. All purchases are processed automatically. If you run into any issues with your order, please reach out to staff and we'll get it sorted.<br><br>
-                        ✿ Thank you for supporting DaisyMC! ✿<br><br>
-                        Feel free to contact us on Discord by opening a ticket: <a href="https://discord.gg/Shub57r8wz" target="_blank" rel="noopener noreferrer">discord.gg/daisymc</a>
-                    </p>
-                    <div class="payment-banner">
-                        <img src="https://i.ibb.co/SwZ2723/paymentmethds.png" class="payment-methods">
-                        <span>+ over 45 more payment methods available.</span>
-                    </div>
-                </div>
-                <div class="info-cards">
-                    <div class="info-card refund">
-                        <h3>REFUND POLICY</h3>
-                        <p>
-                            All payments are non-refundable. Attempting a chargeback will result in permanent ban on our server.
-                        </p>
-                    </div>
-                    <div class="info-card privacy">
-                        <h3>PRIVACY POLICY</h3>
-                        <p>
-                            All information that is required on this website is not shared with any other third parties and is stored securely.
-                        </p>
+                    <h2>Ranks</h2>
+                    <div class="rank-store">
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/PJzcvMvV/orchidrank150.png" class="rank-icon">
+                            <h3>Orchid Rank</h3>
+                            <div class="rank-price"
+                                data-usd="11.99"
+                                data-gbp="8.95"
+                                data-eur="10.35"
+                                data-aud="17.02"
+                                data-cad="16.27"
+                                data-brl="62.89"
+                                data-dkk="77.36"
+                                data-nok="115.42"
+                                data-nzd="20.27"
+                                data-pln="44.30"
+                                data-sek="110.37">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn" data-name="orchid-rank" data-price="11.99">+ Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/SK2vf4zZ/blossomrank150.png" class="rank-icon">
+                            <h3>Blossom Rank</h3>
+                            <div class="rank-price"
+                                data-usd="29.99"
+                                data-gbp="22.40"
+                                data-eur="25.90"
+                                data-aud="42.58"
+                                data-cad="40.72"
+                                data-brl="157.34"
+                                data-dkk="193.52"
+                                data-nok="288.74"
+                                data-nzd="50.71"
+                                data-pln="110.83"
+                                data-sek="276.09">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/SNd3yDh6/cloudrank150.png" class="rank-icon">
+                            <h3>Cloud Rank</h3>
+                            <div class="rank-price"
+                                data-usd="89.99"
+                                data-gbp="67.23"
+                                data-eur="77.73"
+                                data-aud="127.78"
+                                data-cad="122.20"
+                                data-brl="472.14"
+                                data-dkk="580.71"
+                                data-nok="866.45"
+                                data-nzd="152.18"
+                                data-pln="332.59"
+                                data-sek="828.49">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="rank-card">
+                            <img src="https://i.postimg.cc/HLqPSNQh/daisyrank150.png" class="rank-icon">
+                            <h3>Daisy Rank</h3>
+                            <div class="rank-price"
+                                data-usd="179.99"
+                                data-gbp="134.47"
+                                data-eur="155.47"
+                                data-aud="255.59"
+                                data-cad="244.42"
+                                data-brl="944.36"
+                                data-dkk="1161.51"
+                                data-nok="1733.01"
+                                data-nzd="304.39"
+                                data-pln="665.24"
+                                data-sek="1657.09">
+                            </div>
+                            <div class="rank-actions">
+                                <button class="info-btn">!</button>
+                                <button class="cart-btn">+ Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
