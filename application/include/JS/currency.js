@@ -1,74 +1,99 @@
-const button = document.getElementById("currency-button");
-const menu = document.getElementById("currency-menu");
+const button = document.getElementById('currency-button');
+const menu = document.getElementById('currency-menu');
+const prices = document.querySelectorAll('.rank-price');
 
-/* Define currency symbols */
-const currencySymbols = {
-    USD: "$",
-    GBP: "£",
-    EUR: "€",
-    AUD: "",
-    CAD: "",
-    BRL: "R$",
-    DKK: "",
-    NOK: "",
-    NZD: "",
-    PLN: "",
-    SEK: ""
-};
+if (button && menu) {
+    const baseCurrency = 'GBP';
+    const exchangeRatesFromGbp = {
+        GBP: 1,
+        USD: 1.27,
+        EUR: 1.17,
+        AUD: 1.95,
+        CAD: 1.76,
+        BRL: 7.33,
+        DKK: 8.72,
+        NOK: 13.65,
+        NZD: 2.14,
+        PLN: 4.99,
+        SEK: 13.36
+    };
 
-/* Load saved currency on page load */
-const savedCurrency = localStorage.getItem("currency");
-if (savedCurrency) {
-    const symbol = currencySymbols[savedCurrency] || "";
-    button.textContent = `${symbol} ${savedCurrency}`;
-}
+    const locales = {
+        GBP: 'en-GB',
+        USD: 'en-US',
+        EUR: 'de-DE',
+        AUD: 'en-AU',
+        CAD: 'en-CA',
+        BRL: 'pt-BR',
+        DKK: 'da-DK',
+        NOK: 'nb-NO',
+        NZD: 'en-NZ',
+        PLN: 'pl-PL',
+        SEK: 'sv-SE'
+    };
 
-/* Toggle currency menu */
-button.addEventListener("click", () => {
-    menu.classList.toggle("active");
-});
-
-/* Update prices when a currency is selected */
-document.querySelectorAll(".currency-grid button").forEach(currency => {
-    currency.addEventListener("click", () => {
-        const code = currency.textContent;
-        const symbol = currencySymbols[code] || "";
-
-        button.textContent = `${symbol} ${code}`;
-        localStorage.setItem("currency", code);
-
-        updatePrices(code);
-
-        menu.classList.remove("active");
-    });
-});
-
-/* Close currency menu if clicking outside */
-document.addEventListener("click", (e) => {
-    if (!button.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove("active");
+    function formatCurrency(amount, currencyCode) {
+        return new Intl.NumberFormat(locales[currencyCode] || 'en-GB', {
+            style: 'currency',
+            currency: currencyCode,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(amount);
     }
-});
 
-/* Select all rank price elements */
-const prices = document.querySelectorAll(".rank-price");
+    function getPriceValue(element, currencyCode) {
+        const directValue = Number(element.dataset[currencyCode.toLowerCase()] || 0);
 
-/* Update all prices based on selected currency */
-function updatePrices(currency) {
-    prices.forEach(price => {
-        // Grab the exact price from the data attribute for this currency
-        const value = price.dataset[currency.toLowerCase()];
-        if (!value) return;
+        if (directValue > 0) {
+            return directValue;
+        }
 
-        const symbol = currencySymbols[currency] || "";
-        price.textContent = `${symbol}${value} ${currency}`;
+        const gbpValue = Number(element.dataset.gbp || 0);
+
+        if (gbpValue <= 0) {
+            return 0;
+        }
+
+        return gbpValue * (exchangeRatesFromGbp[currencyCode] || 1);
+    }
+
+    function updatePrices(currencyCode) {
+        prices.forEach((price) => {
+            const value = getPriceValue(price, currencyCode);
+
+            if (value <= 0) {
+                return;
+            }
+
+            price.textContent = formatCurrency(value, currencyCode);
+        });
+    }
+
+    function updateButton(currencyCode) {
+        button.textContent = currencyCode;
+    }
+
+    document.querySelectorAll('.currency-grid button').forEach((currency) => {
+        currency.addEventListener('click', () => {
+            const code = currency.textContent.trim();
+            localStorage.setItem('currency', code);
+            updateButton(code);
+            updatePrices(code);
+            menu.classList.remove('active');
+        });
     });
+
+    button.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.remove('active');
+        }
+    });
+
+    const savedCurrency = localStorage.getItem('currency') || baseCurrency;
+    updateButton(savedCurrency);
+    updatePrices(savedCurrency);
 }
-
-/* Initialize on page load */
-const initCurrency = () => {
-    const saved = localStorage.getItem("currency") || "USD";
-    updatePrices(saved);
-};
-
-initCurrency();
