@@ -11,7 +11,7 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<link rel="stylesheet" href="/include/css/CategoryStyle.css">
+<link rel="stylesheet" href="/include/components/categories/CategoryStyle.css">
 
 <aside class="category">
     <h3 class="category-title">START SHOPPING</h3>
