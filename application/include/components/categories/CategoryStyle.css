@@ -1,0 +1,75 @@
+.category {
+    width: 100%;
+    background: #202f41;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+    text-align: center;
+    color: #99c6f8;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+/* Sidebar Items */
+
+.category-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #f9fcc7;
+    font-weight: 600;
+    margin-bottom: 10px;
+    background: #1e2c3d;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* animated light sweep */
+.category-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 120%;
+    height: 100%;
+
+    background: linear-gradient(120deg,
+            transparent 30%,
+            #f9fcc7 50%,
+            transparent 70%);
+
+    transform: skewX(-20deg);
+}
+
+/* sweep animation */
+.category-item:hover::before {
+    animation: sidebarSweep 1.7s ease;
+}
+
+/* hover state */
+.category-item:hover {
+    background: #2a3c52;
+    transform: translateX(4px);
+}
+
+/* keep content above animation */
+.category-item img,
+.category-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Active item */
+
+.category-item.active {
+    background: #2a3c52;
+}

@@ -4,99 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
-    <link rel="stylesheet" href="/include/css/upgraderank.css">
+    <link rel="stylesheet" href="/include/css/store-base.css">
+    <link rel="stylesheet" href="/include/css/FlowerParticles.css">
 </head>
 
 <body>
-
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/particles/GetPartices.php'; ?>
     <div class="container">
 
-        <div class="topbar">
-
-            <div class="topbar-left">
-                <a href="/home/" class="back-button">↩ back to main site</a>
-            </div>
-
-            <div class="topbar-right">
-
-                <div class="currency-wrapper">
-                    <button class="currency" id="currency-button">$ USD</button>
-
-                    <div class="currency-menu" id="currency-menu">
-                        <div class="currency-grid">
-                            <button>AUD</button>
-                            <button>BRL</button>
-                            <button>CAD</button>
-                            <button>DKK</button>
-                            <button>EUR</button>
-                            <button>NOK</button>
-                            <button>NZD</button>
-                            <button>PLN</button>
-                            <button>GBP</button>
-                            <button>SEK</button>
-                            <button>USD</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="basket">
-                    <div class="basket-text">
-                        <strong>Guest's Basket</strong><br>
-                        <span>click to login</span>
-                    </div>
-
-                    <div class="basket-avatar">
-                        <img src="https://mc-heads.net/body/Steve2/left" class="basket-player">
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/topbar/GetTopbar.php'; ?>
 
 
         <header class="server-header">
-
-            <div class="server-left">
-                <img src="https://i.postimg.cc/cH0Rd9jv/Daisy-MCLogo270.png" class="server-logo">
-            </div>
-
-            <div class="server-center" id="copy-ip">
-
-                <div class="play-button">▶︎</div>
-
-                <div class="server-info">
-                    <div class="server-ip">play.daisymc.net</div>
-                    <div class="server-players">
-                        <span class="player-number" id="player-count"></span> players online
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="server-right">
-
-                <div class="server-icons">
-                    <a href="https://discord.gg/Shub57r8wz" class="icon-square" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.postimg.cc/wMWDJCqn/icons8-discord-new-64.png" class="discord-logo">
-                    </a>
-                    <a href="https://wiki.daisymc.net/" class="icon-square" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.postimg.cc/C1sGMZ9W/icons8-world-64.png" class="website-logo">
-                    </a>
-                </div>
-
-                <div class="server-buttons">
-                    <a href="https://discord.gg/Shub57r8wz" class="pill-button" target="_blank" rel="noopener noreferrer">join</a>
-                    <a href="https://wiki.daisymc.net/" class="pill-button" target="_blank" rel="noopener noreferrer">view</a>
-                </div>
-
-            </div>
-
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/header/GetHeader.php'; ?>
         </header>
 
         <div class="body">
             <div class="left-column">
-                <?php include '/application/include/Components/GetCategories.php'; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/categories/GetCategories.php'; ?>
 
                 <div class="top-customer">
                     <h3 class="top-title">TOP CUSTOMER</h3>
@@ -192,34 +117,12 @@
     </div>
 
     <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <p>
-                    <strong>DaisyMC</strong> is a Minecraft Java Edition server with a<br> welcoming community. This is the only official store for<br> the server.
-                </p>
-            </div>
-            <div class="footer-column">
-                <h3>Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>
-                    If you have any questions, concerns or want to contact<br>us, you can do this on our discord.
-                </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p><strong>All rights reserved. 2026 © DaisyMC</strong><br>We're not affiliated with or endorsed by Mojang, AB.</br></p>
-        </div>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/footer/GetFooter.php'; ?>
     </footer>
 
     <script src="/include/JS/currency.js"></script>
     <script src="/include/JS/playercount.js"></script>
+    <script src="/include/JS/AnimateFlowers.js"></script>
     <script>
         document.getElementById("copy-ip").addEventListener("click", function() {
             navigator.clipboard.writeText("play.daisymc.net");

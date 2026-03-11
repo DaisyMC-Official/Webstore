@@ -1,0 +1,165 @@
+.server-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 50px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.server-logo {
+    width: 270px;
+}
+
+.server-left {
+    margin-right: 80px;
+}
+
+.server-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.server-center {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    gap: 14px;
+    cursor: pointer;
+}
+
+.server-center:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #99c6f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+.server-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.server-ip {
+    font-weight: 700;
+    font-size: 22px;
+    color: white;
+}
+
+.server-players {
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.player-number {
+    background: #99c6f8;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.server-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-square {
+    width: 64px;
+    height: 64px;
+    margin-right: 5px;
+    margin-left: 0px;
+    border-radius: 12px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.icon-square:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.server-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.pill-button {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid #d3cfd4;
+    background: #efedf0;
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.pill-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent 30%,
+            #2ca1c5 50%,
+            transparent 70%);
+    transform: skewX(-20deg);
+    z-index: 1;
+}
+
+.pill-button:hover::before {
+    animation: sidebarSweep 1.8s ease;
+}
+
+.pill-button:hover {
+    background: #f7f7f7;
+}
+
+/* === Copy IP Popup === */
+
+#copy-popup {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #99c6f8;
+    color: #000000;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+#copy-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
