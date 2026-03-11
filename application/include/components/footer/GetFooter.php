@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <link rel="stylesheet" href="/include/components/footer/FooterStyle.css">
 <div class="footer-inner">
     <div class="footer-column">
@@ -23,3 +24,4 @@
 <div class="footer-bottom">
     <p><strong>All rights reserved. 2026 © DaisyMC</strong><br>We're not affiliated with or endorsed by Mojang, AB.</br></p>
 </div>
+<?php return ob_get_clean(); ?>

@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="/include/components/header/HeaderStyle.css">
+<?php ob_start(); $b = $GLOBALS['base_url'] ?? ''; ?>
+<link rel="stylesheet" href="<?php echo htmlspecialchars($b, ENT_QUOTES, 'UTF-8'); ?>/include/components/header/HeaderStyle.css">
 <div class="server-left">
     <img src="https://i.postimg.cc/cH0Rd9jv/Daisy-MCLogo270.png" class="server-logo">
 </div>
@@ -19,11 +20,11 @@
 <div class="server-right">
 
     <div class="server-icons">
-        <a href="https://discord.gg/Shub57r8wz" class="icon-square" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.postimg.cc/wMWDJCqn/icons8-discord-new-64.png" class="discord-logo">
+        <a href="https://discord.gg/Shub57r8wz" class="icon-square" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+            <i class="fa-brands fa-discord"></i>
         </a>
-        <a href="https://wiki.daisymc.net/" class="icon-square" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.postimg.cc/C1sGMZ9W/icons8-world-64.png" class="website-logo">
+        <a href="https://wiki.daisymc.net/" class="icon-square" target="_blank" rel="noopener noreferrer" aria-label="Website">
+            <i class="fa-solid fa-globe"></i>
         </a>
     </div>
 
@@ -33,3 +34,4 @@
     </div>
 
 </div>
+<?php return ob_get_clean(); ?>

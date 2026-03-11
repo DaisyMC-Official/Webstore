@@ -1,9 +1,12 @@
 const container = document.querySelector(".flower-particles");
 
-const PETAL_COUNT = 40;
+const PETAL_COUNT = 60;
 
-for (let i = 0; i < PETAL_COUNT; i++) {
+// spread spawning over 2.2 seconds
+const SPAWN_DURATION_MS = 2200;
+const staggerDelay = SPAWN_DURATION_MS / PETAL_COUNT;
 
+function spawnPetal(index) {
   const petal = document.createElement("div");
   petal.className = "petal";
 
@@ -19,6 +22,15 @@ for (let i = 0; i < PETAL_COUNT; i++) {
   const scale = 0.6 + Math.random() * 0.8;
   petal.style.transform = `scale(${scale})`;
 
+  petal.style.opacity = "0";
+  petal.style.transition = "opacity 0.6s ease-out";
   container.appendChild(petal);
 
+  requestAnimationFrame(() => {
+    petal.style.opacity = "1";
+  });
+}
+
+for (let i = 0; i < PETAL_COUNT; i++) {
+  setTimeout(() => spawnPetal(i), i * staggerDelay);
 }

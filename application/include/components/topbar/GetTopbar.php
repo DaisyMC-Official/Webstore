@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <link rel="stylesheet" href="/include/components/topbar/TopbarStyle.css">
 <div class="topbar">
 
@@ -8,7 +9,7 @@
     <div class="topbar-right">
 
         <div class="currency-wrapper">
-            <button class="currency" id="currency-button">$ USD</button>
+            <button class="currency" id="currency-button">GBP</button>
 
             <div class="currency-menu" id="currency-menu">
                 <div class="currency-grid">
@@ -41,3 +42,4 @@
     </div>
 
 </div>
+<?php return ob_get_clean(); ?>
