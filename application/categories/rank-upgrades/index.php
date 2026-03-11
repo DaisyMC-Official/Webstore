@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
     <link rel="stylesheet" href="/include/css/upgraderank.css">
+    <link rel="stylesheet" href="/include/css/FlowerParticles.css">
 </head>
 
 <body>
-
+    <div class="flower-particles"></div>
     <div class="container">
 
         <div class="topbar">
@@ -220,6 +221,7 @@
 
     <script src="/include/JS/currency.js"></script>
     <script src="/include/JS/playercount.js"></script>
+    <script src="/include/JS/AnimateFlowers.js"></script>
     <script>
         document.getElementById("copy-ip").addEventListener("click", function() {
             navigator.clipboard.writeText("play.daisymc.net");

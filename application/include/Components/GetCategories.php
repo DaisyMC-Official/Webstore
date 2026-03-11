@@ -11,6 +11,8 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
+<link rel="stylesheet" href="/include/css/CategoryStyle.css">
+
 <aside class="category">
     <h3 class="category-title">START SHOPPING</h3>
     <a href="/home/" class="category-item active">
@@ -19,12 +21,16 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     </a>
 
     <?php foreach ($categories as $category): ?>
-        <a href="/category/<?php echo strtolower($category['Name']); ?>/" class="category-item">
+        <?php
+        // This is needed to replace all spaces from the database's fetched Category with a valid URL slug.
+        // IMPORTANT: Make sure if a url contains a space, you replace the space with a hyphen -
+        // e.g "rank upgrades" -> "rank-upgrades"
+        $slug = strtolower(trim(preg_replace('/\s+/', '-', $category['Name'])));
+        ?>
+
+        <a href="/categories/<?php echo $slug; ?>/" class="category-item">
             <img src="https://mc-heads.net/head/<?php echo $category['Icon']; ?>/40">
             <span class="category-text"><?php echo $category['Name']; ?></span>
         </a>
     <?php endforeach; ?>
 </aside>
-
-
-

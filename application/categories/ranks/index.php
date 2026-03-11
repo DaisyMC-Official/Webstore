@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
     <link rel="stylesheet" href="/include/css/rank.css">
+    <link rel="stylesheet" href="/include/css/FlowerParticles.css">
 </head>
 
 <body>
-
+    <div class="flower-particles"></div>
     <div class="container">
 
         <div class="topbar">
@@ -97,7 +98,7 @@
         <div class="body">
             <div class="left-column">
                 <?php include '/application/include/Components/GetCategories.php'; ?>
-                
+
                 <div class="top-customer">
                     <h3 class="top-title">TOP CUSTOMER</h3>
                     <div class="top-player">
@@ -296,7 +297,7 @@
     <script src="/include/JS/store.js"></script>
     <script src="/include/JS/copyip.js"></script>
     <script src="/include/JS/cart.js"></script>
-
+    <script src="/include/JS/AnimateFlowers.js"></script>
 </body>
 
 </html>
