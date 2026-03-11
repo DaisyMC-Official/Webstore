@@ -1,170 +1,176 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener('DOMContentLoaded', function () {
+    const basket = document.querySelector('.basket');
+    const modal = document.getElementById('login-modal');
+    const closeBtn = document.getElementById('login-close');
+    const sidebar = document.getElementById('basket-sidebar');
+    const overlay = document.getElementById('basket-overlay');
+    const logoutBtn = document.getElementById('logout-btn');
+    const sidebarUsername = document.getElementById('sidebar-username');
+    const usernameInput = document.getElementById('login-username');
+    const loginBtn = document.getElementById('login-submit');
+    const loginHead = document.getElementById('login-head');
+    const basketName = document.getElementById('basket-name');
+    const basketItems = document.getElementById('basket-items');
+    const basketSkin = document.getElementById('basket-skin');
 
-// modal open/close
-const basket = document.querySelector(".basket");
-const modal = document.getElementById("login-modal");
-const closeBtn = document.getElementById("login-close");
-
-// SIDEBAR ELEMENTS
-const sidebar = document.getElementById("basket-sidebar");
-const overlay = document.getElementById("basket-overlay");
-const logoutBtn = document.getElementById("logout-btn");
-const sidebarUsername = document.getElementById("sidebar-username");
-const sidebarItems = document.getElementById("sidebar-items");
-
-// LOGIN ELEMENTS
-const usernameInput = document.getElementById("login-username");
-const loginBtn = document.getElementById("login-submit");
-const loginHead = document.getElementById("login-head");
-
-const basketName = document.getElementById("basket-name");
-const basketItems = document.getElementById("basket-items");
-const basketSkin = document.getElementById("basket-skin");
-
-let skinTimer;
-
-
-// BASKET CLICK
-basket.addEventListener("click", () => {
-
-    const savedUser = localStorage.getItem("daisymc_user");
-
-    if(!savedUser){
-        modal.classList.add("active");
+    if (!basket || !modal || !closeBtn || !overlay || !usernameInput || !loginBtn || !loginHead || !basketName || !basketItems || !basketSkin) {
         return;
     }
 
-    openSidebar(savedUser);
+    let skinTimer;
 
-});
-
-
-// MODAL CLOSE
-closeBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-});
-
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.classList.remove("active");
+    function getSavedUser() {
+        return localStorage.getItem('daisymc_user');
     }
-});
 
+    function updateBasket(username, count = null) {
+        basketName.textContent = username + "'s Basket";
+        basketSkin.src = 'https://mc-heads.net/body/' + username + '/left';
 
-// USERNAME SKIN PREVIEW
-usernameInput.addEventListener("input", function(){
-
-    clearTimeout(skinTimer);
-
-    skinTimer = setTimeout(() => {
-
-        let username = usernameInput.value.trim();
-
-        if(username === ""){
-            loginHead.src = "https://mc-heads.net/head/Steve";
+        if (count !== null) {
+            basketItems.textContent = count + ' items';
             return;
         }
 
-        loginHead.src = "https://mc-heads.net/head/" + username;
-
-    },200);
-
-});
-
-
-// ENTER KEY LOGIN
-usernameInput.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        loginBtn.click();
-    }
-});
-
-
-// LOGIN BUTTON
-loginBtn.addEventListener("click", function(){
-
-    const username = usernameInput.value.trim();
-
-    if(username === ""){
-
-        const loginBox = document.querySelector(".login-box");
-
-        loginBox.classList.add("shake");
-
-        setTimeout(() => {
-            loginBox.classList.remove("shake");
-        },350);
-
-        usernameInput.focus();
-        return;
+        const cart = JSON.parse(localStorage.getItem('daisymc_cart')) || [];
+        basketItems.textContent = cart.length + ' items';
     }
 
-    localStorage.setItem("daisymc_user", username);
+    function openSidebar(username) {
+        if (!sidebar || !sidebarUsername) {
+            return;
+        }
 
-    updateBasket(username);
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        sidebarUsername.textContent = username + "'s Basket";
+    }
 
-    modal.classList.remove("active");
+    basket.addEventListener('click', function () {
+        const savedUser = getSavedUser();
 
-});
+        if (!savedUser) {
+            modal.classList.add('active');
+            return;
+        }
 
+        openSidebar(savedUser);
+    });
 
-// UPDATE BASKET
-function updateBasket(username){
+    closeBtn.addEventListener('click', function () {
+        modal.classList.remove('active');
+    });
 
-    basketName.textContent = username + "'s Basket";
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
 
-    const cart = JSON.parse(localStorage.getItem("daisymc_cart")) || [];
-    basketItems.textContent = cart.length + " items";
+    usernameInput.addEventListener('input', function () {
+        clearTimeout(skinTimer);
 
-    basketSkin.src = "https://mc-heads.net/body/" + username + "/left";
+        skinTimer = setTimeout(function () {
+            const username = usernameInput.value.trim();
+            loginHead.src = username === '' ? 'https://mc-heads.net/head/Steve' : 'https://mc-heads.net/head/' + username;
+        }, 200);
+    });
 
-}
+    usernameInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            loginBtn.click();
+        }
+    });
 
+    loginBtn.addEventListener('click', async function () {
+        const username = usernameInput.value.trim();
 
-// OPEN SIDEBAR
-function openSidebar(username){
+        if (username === '') {
+            const loginBox = document.querySelector('.login-box');
 
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
+            if (loginBox) {
+                loginBox.classList.add('shake');
+                setTimeout(function () {
+                    loginBox.classList.remove('shake');
+                }, 350);
+            }
 
-    sidebarUsername.textContent = username + "'s Basket";
+            usernameInput.focus();
+            return;
+        }
 
-    const cart = JSON.parse(localStorage.getItem("daisymc_cart")) || [];
-    sidebarItems.textContent = cart.length + " items in basket";
+        localStorage.setItem('daisymc_user', username);
 
-}
+        if (typeof BasketPHP !== 'undefined') {
+            const result = await BasketPHP.login(username);
+            if (result.csrf_token) {
+                BasketPHP.setCsrfToken(result.csrf_token);
+            }
+            updateBasket(username, Number(result.basket_count || 0));
+        } else {
+            updateBasket(username);
+        }
 
+        modal.classList.remove('active');
+    });
 
-// CLOSE SIDEBAR
-overlay.addEventListener("click", () => {
+    overlay.addEventListener('click', function () {
+        if (sidebar) {
+            sidebar.classList.remove('active');
+        }
 
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
+        overlay.classList.remove('active');
+    });
 
-});
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function () {
+            localStorage.removeItem('daisymc_user');
 
+            if (typeof BasketPHP !== 'undefined') {
+                await BasketPHP.logout();
+            }
 
-// LOGOUT BUTTON
-logoutBtn.addEventListener("click", () => {
+            basketName.textContent = "Guest's Basket";
+            basketItems.textContent = 'click to login';
+            basketSkin.src = 'https://mc-heads.net/body/Steve2/left';
 
-    localStorage.removeItem("daisymc_user");
-    localStorage.removeItem("daisymc_cart_count");
+            if (sidebar) {
+                sidebar.classList.remove('active');
+            }
 
-    basketName.textContent = "Guest's Basket";
-    basketItems.textContent = "click to login";
-    basketSkin.src = "https://mc-heads.net/body/Steve2/left";
+            overlay.classList.remove('active');
+        });
+    }
 
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
+    const savedUser = getSavedUser();
 
-});
+    if (savedUser) {
+        if (typeof BasketPHP !== 'undefined') {
+            BasketPHP.checkSession().then(async function (result) {
+                if (result.logged_in) {
+                    if (result.csrf_token) {
+                        BasketPHP.setCsrfToken(result.csrf_token);
+                    }
+                    updateBasket(savedUser, Number(result.count || 0));
+                } else {
+                    const loginResult = await BasketPHP.login(savedUser);
 
+                    if (loginResult.success) {
+                        if (loginResult.csrf_token) {
+                            BasketPHP.setCsrfToken(loginResult.csrf_token);
+                        }
 
-// AUTO LOGIN
-const savedUser = localStorage.getItem("daisymc_user");
-
-if(savedUser){
-    updateBasket(savedUser);
-}
-
+                        updateBasket(savedUser, Number(loginResult.basket_count || 0));
+                    } else {
+                        localStorage.removeItem('daisymc_user');
+                        basketName.textContent = "Guest's Basket";
+                        basketItems.textContent = 'click to login';
+                        basketSkin.src = 'https://mc-heads.net/body/Steve2/left';
+                    }
+                }
+            });
+        } else {
+            updateBasket(savedUser);
+        }
+    }
 });
