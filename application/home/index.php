@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>DaisyMC | Welcome</title>
     <link rel="stylesheet" href="/include/css/home.css">
+    <link rel="stylesheet" href="/include/css/FlowerParticles.css">
 </head>
 
 <body>
-
+    <div class="flower-particles"></div>
     <div class="container">
 
         <div class="topbar">
@@ -234,7 +235,7 @@
     <script src="/include/JS/store.js"></script>
     <script src="/include/JS/copyip.js"></script>
     <script src="/include/JS/cart.js"></script>
-
+    <script src="/include/JS/AnimateFlowers.js"></script>
 </body>
 
 </html>
