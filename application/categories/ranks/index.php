@@ -1,134 +1,60 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/Basket/BasketSession.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/Models/Rank.php';
+
+BasketSession::start();
+$baseUrl = '';
+$GLOBALS['base_url'] = $baseUrl;
+
+$rankModel = new Rank();
+$ranks = $rankModel->getRanksByCategory(1);
+$basketCsrfToken = BasketSession::getCsrfToken();
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-basket-csrf="<?php echo htmlspecialchars($basketCsrfToken, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DaisyMC | Welcome</title>
-    <link rel="stylesheet" href="/include/css/store-base.css">
-    <link rel="stylesheet" href="/include/css/FlowerParticles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/include/css/store-base.css">
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/include/css/FlowerParticles.css">
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/particles/GetPartices.php'; ?>
+    <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/particles/GetPartices.php'; ?>
     <div class="container">
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/topbar/GetTopbar.php'; ?>
+        <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/topbar/GetTopbar.php'; ?>
 
 
         <header class="server-header">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/header/GetHeader.php'; ?>
+            <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/header/GetHeader.php'; ?>
         </header>
 
         <div class="body">
             <div class="left-column">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/categories/GetCategories.php'; ?>
-
-                <div class="top-customer">
-                    <h3 class="top-title">TOP CUSTOMER</h3>
-                    <div class="top-player">
-                        <img src="https://mc-heads.net/body/ItzRepsac_" class="top-skin">
-                        <div class="top-info">
-                            <strong>ItzRepsac_</strong>
-                            <span>Paid the most this week.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="community-goal">
-                    <h3 class="goal-title">COMMUNITY GOAL</h3>
-                    <div class="goal-percent">77% completed</div>
-                    <div class="goal-bar">
-                        <div class="goal-progress" style="width:77%"></div>
-                    </div>
-                </div>
+                <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/categories/GetCategories.php'; ?>
+                <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/customer-goal/GetCustomerAndGoal.php'; ?>
             </div>
             <main class="content">
                 <div class="welcome-card">
                     <h2>Ranks</h2>
                     <div class="rank-store">
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/PJzcvMvV/orchidrank150.png" class="rank-icon">
-                            <h3>Orchid Rank</h3>
-                            <div class="rank-price"
-                                data-usd="11.99"
-                                data-gbp="8.95"
-                                data-eur="10.35"
-                                data-aud="17.02"
-                                data-cad="16.27"
-                                data-brl="62.89"
-                                data-dkk="77.36"
-                                data-nok="115.42"
-                                data-nzd="20.27"
-                                data-pln="44.30"
-                                data-sek="110.37">
+                        <?php foreach ($ranks as $rank): ?>
+                            <div class="rank-card">
+                                <img src="<?php echo htmlspecialchars($rank['image_url'], ENT_QUOTES, 'UTF-8'); ?>" class="rank-icon" alt="<?php echo htmlspecialchars($rank['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <h3><?php echo htmlspecialchars($rank['name'], ENT_QUOTES, 'UTF-8'); ?> Rank</h3>
+                                <div class="rank-price"
+                                    data-gbp="<?php echo number_format($rank['price'], 2, '.', ''); ?>">
+                                </div>
+                                <div class="rank-actions">
+                                    <?php echo basket_render_add_button($rank['name'], $rank['price'], '+ Add to Cart', $rank['id']); ?>
+                                </div>
                             </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn" data-name="orchid-rank" data-price="11.99">+ Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/SK2vf4zZ/blossomrank150.png" class="rank-icon">
-                            <h3>Blossom Rank</h3>
-                            <div class="rank-price"
-                                data-usd="29.99"
-                                data-gbp="22.40"
-                                data-eur="25.90"
-                                data-aud="42.58"
-                                data-cad="40.72"
-                                data-brl="157.34"
-                                data-dkk="193.52"
-                                data-nok="288.74"
-                                data-nzd="50.71"
-                                data-pln="110.83"
-                                data-sek="276.09">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/SNd3yDh6/cloudrank150.png" class="rank-icon">
-                            <h3>Cloud Rank</h3>
-                            <div class="rank-price"
-                                data-usd="89.99"
-                                data-gbp="67.23"
-                                data-eur="77.73"
-                                data-aud="127.78"
-                                data-cad="122.20"
-                                data-brl="472.14"
-                                data-dkk="580.71"
-                                data-nok="866.45"
-                                data-nzd="152.18"
-                                data-pln="332.59"
-                                data-sek="828.49">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="rank-card">
-                            <img src="https://i.postimg.cc/HLqPSNQh/daisyrank150.png" class="rank-icon">
-                            <h3>Daisy Rank</h3>
-                            <div class="rank-price"
-                                data-usd="179.99"
-                                data-gbp="134.47"
-                                data-eur="155.47"
-                                data-aud="255.59"
-                                data-cad="244.42"
-                                data-brl="944.36"
-                                data-dkk="1161.51"
-                                data-nok="1733.01"
-                                data-nzd="304.39"
-                                data-pln="665.24"
-                                data-sek="1657.09">
-                            </div>
-                            <div class="rank-actions">
-                                <button class="info-btn">!</button>
-                                <button class="cart-btn">+ Add to Cart</button>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </main>
@@ -138,10 +64,12 @@
     </div>
 
     <footer class="site-footer">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/components/footer/GetFooter.php'; ?>
+        <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/footer/GetFooter.php'; ?>
     </footer>
 
     <div id="copy-popup">IP Copied to Clipboard!</div>
+
+    <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/toast/GetToast.php'; ?>
 
     <!-- Login Modal -->
     <div id="login-modal" class="login-modal">
@@ -184,7 +112,7 @@
                 <!-- Items will be injected here -->
             </ul>
             <div class="cart-total">
-                Total: $<span id="cart-total">0.00</span>
+                Total: £<span id="cart-total">0.00</span>
             </div>
             <button id="checkout-btn">Checkout</button>
         </div>
@@ -193,12 +121,15 @@
 
     <div id="basket-overlay" class="basket-overlay"></div>
 
-    <script src="/include/JS/currency.js"></script>
-    <script src="/include/JS/playercount.js"></script>
-    <script src="/include/JS/store.js"></script>
-    <script src="/include/JS/copyip.js"></script>
-    <script src="/include/JS/cart.js"></script>
-    <script src="/include/JS/AnimateFlowers.js"></script>
+    <script>window.BASE_URL = '<?php echo addslashes($baseUrl); ?>';</script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/currency.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/playercount.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/store.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/BasketManager.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/AnimateToast.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/copyip.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/cart.js"></script>
+    <script src="<?php echo $baseUrl; ?>/include/JS/AnimateFlowers.js"></script>
 </body>
 
 </html>
