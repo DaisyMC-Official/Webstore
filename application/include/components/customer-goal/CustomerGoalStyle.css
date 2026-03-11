@@ -1,0 +1,145 @@
+.community-goal {
+  margin-top: 20px;
+  background: #202f41;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.goal-title {
+  text-align: center;
+  color: #00c6f8;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.goal-percent {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.goal-bar {
+  width: 100%;
+  height: 18px;
+  background: #3a4c61;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.goal-progress {
+  height: 100%;
+  border-radius: 999px;
+  width: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #f9fcc7,
+    #f9fcc7 12px,
+    #f9fcc7a6 12px,
+    #f9fcc7a6 24px
+  );
+  background-size: 40px 40px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.4);
+  animation:
+    fillGoal 1.8s ease forwards,
+    stripeMove 2s linear infinite;
+}
+
+.top-customer {
+  margin-top: 25px;
+  background: #202f41;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.top-title {
+  text-align: center;
+  color: #99c6f8;
+  margin: 0 0 0px 0;
+  font-weight: 700;
+}
+
+.top-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.top-skin {
+  height: 140px;
+  margin-bottom: -40px;
+}
+
+.top-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 2;
+}
+
+.top-info strong {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.top-info span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* === Responsive (additive only) === */
+@media (max-width: 768px) {
+  .community-goal,
+  .top-customer {
+    padding: 14px;
+    margin-top: 16px;
+  }
+
+  .goal-title,
+  .top-title {
+    font-size: 0.95rem;
+  }
+
+  .goal-bar {
+    height: 14px;
+  }
+
+  .goal-percent {
+    font-size: 13px;
+  }
+
+  .top-player {
+    height: auto;
+    min-height: 80px;
+    gap: 10px;
+  }
+
+  .top-skin {
+    height: 100px;
+    margin-bottom: -30px;
+  }
+
+  .top-info strong {
+    font-size: 16px;
+  }
+
+  .top-info span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .community-goal,
+  .top-customer {
+    padding: 12px;
+  }
+
+  .top-skin {
+    height: 80px;
+    margin-bottom: -24px;
+  }
+
+  .top-info strong {
+    font-size: 14px;
+  }
+}

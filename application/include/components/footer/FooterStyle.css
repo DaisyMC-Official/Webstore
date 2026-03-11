@@ -58,3 +58,53 @@
 .footer-bottom strong {
     font-weight: 900;
 }
+
+/* === Responsive (additive only) === */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 24px 16px;
+        margin-top: 24px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 24px;
+        padding: 0 16px;
+    }
+
+    .footer-column {
+        min-width: 0;
+    }
+
+    .footer-column h3 {
+        font-size: 1rem;
+    }
+
+    .footer-column p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .footer-bottom {
+        padding: 12px 16px;
+        margin-top: 20px;
+        font-size: 12px;
+        border-radius: 12px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 20px 12px;
+    }
+
+    .footer-inner {
+        padding: 0 12px;
+    }
+
+    .footer-bottom {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+}
