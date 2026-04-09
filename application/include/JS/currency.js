@@ -93,6 +93,21 @@ if (button && menu) {
         }
     });
 
+    window.formatPrice = function (gbpAmount) {
+        const code = localStorage.getItem('currency') || baseCurrency;
+        const converted = Number(gbpAmount) * (exchangeRatesFromGbp[code] || 1);
+        return formatCurrency(converted, code);
+    };
+
+    window.updateCurrency = function (code) {
+        localStorage.setItem('currency', code);
+        updateButton(code);
+        updatePrices(code);
+        // Sync mobile nav label
+        const mobileLabel = document.getElementById('mobile-nav-currency-text');
+        if (mobileLabel) mobileLabel.textContent = code;
+    };
+
     const savedCurrency = localStorage.getItem('currency') || baseCurrency;
     updateButton(savedCurrency);
     updatePrices(savedCurrency);

@@ -106,18 +106,27 @@ $GLOBALS['base_url'] = $baseUrl;
     <div id="basket-sidebar" class="basket-sidebar">
 
         <div class="basket-sidebar-header">
-            <h3 id="sidebar-username">Basket</h3>
-            <button id="logout-btn">Logout</button>
+            <div class="basket-sidebar-title">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <h3 id="sidebar-username">Basket</h3>
+            </div>
+            <div class="basket-sidebar-actions">
+                <button id="logout-btn">Logout</button>
+                <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close basket">✕</button>
+            </div>
         </div>
 
         <div class="basket-sidebar-content">
             <ul id="cart-items-list">
                 <!-- Items will be injected here -->
             </ul>
-            <div class="cart-total">
-                Total: $<span id="cart-total">0.00</span>
+            <div class="basket-footer">
+                <div class="cart-total">
+                    <span class="cart-total-label">Total</span>
+                    <span class="cart-total-amount"><span id="cart-total">£0.00</span></span>
+                </div>
+                <button id="checkout-btn">Checkout →</button>
             </div>
-            <button id="checkout-btn">Checkout</button>
         </div>
 
     </div>
@@ -133,6 +142,7 @@ $GLOBALS['base_url'] = $baseUrl;
     <script src="<?php echo $baseUrl; ?>/include/JS/copyip.js"></script>
     <script src="<?php echo $baseUrl; ?>/include/JS/cart.js"></script>
     <script src="<?php echo $baseUrl; ?>/include/JS/AnimateFlowers.js"></script>
+    <?php echo include $_SERVER['DOCUMENT_ROOT'] . '/include/components/mobile-nav/GetMobileNav.php'; ?>
 </body>
 
 </html>

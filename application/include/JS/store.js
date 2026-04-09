@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.getElementById('basket-sidebar');
     const overlay = document.getElementById('basket-overlay');
     const logoutBtn = document.getElementById('logout-btn');
+    const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
     const sidebarUsername = document.getElementById('sidebar-username');
     const usernameInput = document.getElementById('login-username');
     const loginBtn = document.getElementById('login-submit');
@@ -27,13 +28,21 @@ document.addEventListener('DOMContentLoaded', function () {
         basketName.textContent = username + "'s Basket";
         basketSkin.src = 'https://mc-heads.net/body/' + username + '/left';
 
+        let n;
         if (count !== null) {
             basketItems.textContent = count + ' items';
-            return;
+            n = count;
+        } else {
+            const cart = JSON.parse(localStorage.getItem('daisymc_cart')) || [];
+            basketItems.textContent = cart.length + ' items';
+            n = cart.length;
         }
 
-        const cart = JSON.parse(localStorage.getItem('daisymc_cart')) || [];
-        basketItems.textContent = cart.length + ' items';
+        const badge = document.getElementById('mobile-nav-badge');
+        if (badge) {
+            badge.textContent = n;
+            badge.style.display = n > 0 ? 'flex' : 'none';
+        }
     }
 
     function openSidebar(username) {
@@ -122,6 +131,15 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.classList.remove('active');
     });
 
+    if (sidebarCloseBtn) {
+        sidebarCloseBtn.addEventListener('click', function () {
+            if (sidebar) {
+                sidebar.classList.remove('active');
+            }
+            overlay.classList.remove('active');
+        });
+    }
+
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async function () {
             localStorage.removeItem('daisymc_user');
@@ -133,6 +151,12 @@ document.addEventListener('DOMContentLoaded', function () {
             basketName.textContent = "Guest's Basket";
             basketItems.textContent = 'click to login';
             basketSkin.src = 'https://mc-heads.net/body/Steve2/left';
+
+            const logoutBadge = document.getElementById('mobile-nav-badge');
+            if (logoutBadge) {
+                logoutBadge.textContent = '0';
+                logoutBadge.style.display = 'none';
+            }
 
             if (sidebar) {
                 sidebar.classList.remove('active');

@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (basketItemsEl) {
             basketItemsEl.textContent = count + ' items';
         }
+        const badge = document.getElementById('mobile-nav-badge');
+        if (badge) {
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+        }
     }
 
     function renderGuestCart() {
@@ -51,18 +56,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         guestCart.forEach((item, index) => {
             const li = document.createElement('li');
+            const priceDisplay = typeof window.formatPrice === 'function'
+                ? window.formatPrice(item.price)
+                : `£${Number(item.price).toFixed(2)}`;
 
             li.innerHTML = `
                 <span class="cart-item-name">${item.name}</span>
-                <span class="cart-item-price">$${Number(item.price).toFixed(2)}</span>
-                <button class="remove-item-btn" data-index="${index}">X</button>
+                <span class="cart-item-price">${priceDisplay}</span>
+                <button class="remove-item-btn" data-index="${index}">✕</button>
             `;
 
             list.appendChild(li);
             total += Number(item.price);
         });
 
-        totalEl.textContent = total.toFixed(2);
+        totalEl.textContent = typeof window.formatPrice === 'function'
+            ? window.formatPrice(total)
+            : `£${total.toFixed(2)}`;
         updateBasketCount(guestCart.length);
 
         document.querySelectorAll('.remove-item-btn').forEach((button) => {
@@ -87,17 +97,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         basket.forEach((item) => {
             const li = document.createElement('li');
+            const priceDisplay = typeof window.formatPrice === 'function'
+                ? window.formatPrice(item.price)
+                : `£${Number(item.price).toFixed(2)}`;
 
             li.innerHTML = `
                 <span class="cart-item-name">${item.name}</span>
-                <span class="cart-item-price">$${Number(item.price).toFixed(2)}</span>
-                <button class="remove-item-btn" data-id="${item.id}">X</button>
+                <span class="cart-item-price">${priceDisplay}</span>
+                <button class="remove-item-btn" data-id="${item.id}">✕</button>
             `;
 
             list.appendChild(li);
         });
 
-        totalEl.textContent = Number(response.total || 0).toFixed(2);
+        const rawTotal = Number(response.total || 0);
+        totalEl.textContent = typeof window.formatPrice === 'function'
+            ? window.formatPrice(rawTotal)
+            : `£${rawTotal.toFixed(2)}`;
         updateBasketCount(Number(response.count || 0));
 
         document.querySelectorAll('.remove-item-btn').forEach((button) => {

@@ -44,50 +44,69 @@
     stripeMove 2s linear infinite;
 }
 
+/* === Top Customer Card === */
 .top-customer {
-  margin-top: 25px;
+  margin-top: 20px;
   background: #202f41;
   border-radius: 10px;
-  padding: 15px;
+  padding: 16px 16px 0 16px;
+  overflow: hidden;
+  position: relative;
 }
 
 .top-title {
   text-align: center;
   color: #99c6f8;
-  margin: 0 0 0px 0;
+  margin: 0 0 8px 0;
   font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
 }
 
 .top-player {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 100px;
+  align-items: flex-end;
+  gap: 14px;
+  height: 110px;
   overflow: hidden;
 }
 
 .top-skin {
-  height: 140px;
-  margin-bottom: -40px;
+  height: 160px;
+  width: auto;
+  flex-shrink: 0;
+  margin-bottom: -4px;
+  /* slight vertical offset so feet are cut, showing torso + head nicely */
+  object-fit: contain;
+  object-position: top;
 }
 
 .top-info {
   display: flex;
   flex-direction: column;
-  line-height: 2;
+  justify-content: center;
+  padding-bottom: 16px;
+  line-height: 1.4;
+  min-width: 0;
 }
 
 .top-info strong {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  color: #e6edf3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .top-info span {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
+  color: #7a90a8;
+  margin-top: 2px;
 }
 
-/* === Responsive (additive only) === */
+/* === Responsive === */
 @media (max-width: 768px) {
   .community-goal,
   .top-customer {
@@ -95,9 +114,13 @@
     margin-top: 16px;
   }
 
+  .top-customer {
+    padding-bottom: 0;
+  }
+
   .goal-title,
   .top-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .goal-bar {
@@ -109,22 +132,19 @@
   }
 
   .top-player {
-    height: auto;
-    min-height: 80px;
-    gap: 10px;
+    height: 90px;
   }
 
   .top-skin {
-    height: 100px;
-    margin-bottom: -30px;
+    height: 130px;
   }
 
   .top-info strong {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .top-info span {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
@@ -134,9 +154,12 @@
     padding: 12px;
   }
 
-  .top-skin {
+  .top-player {
     height: 80px;
-    margin-bottom: -24px;
+  }
+
+  .top-skin {
+    height: 115px;
   }
 
   .top-info strong {
