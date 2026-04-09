@@ -521,7 +521,7 @@ body {
 
 .rank-store {
   display: grid;
-  grid-template-columns: repeat(auto-fit, max(250px));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
 
@@ -618,21 +618,26 @@ body {
 
 /* === Responsive: tablet and below (no changes to rules above) === */
 @media (max-width: 1024px) {
+  /* Keep side-by-side layout on tablet — narrow left, wide content */
   .body {
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: row;
+    gap: 20px;
     margin-top: 16px;
+    align-items: flex-start;
   }
 
   .left-column {
-    width: 100%;
-    max-width: 100%;
+    width: 200px;
+    min-width: 200px;
+    flex-shrink: 0;
     margin-left: 0;
   }
 
   .content {
-    padding-left: 12px;
-    padding-right: 12px;
+    flex: 1;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .container {
@@ -649,23 +654,32 @@ body {
     min-width: 0;
   }
 
+  /* Rank grid fills the wide content area */
   .rank-store {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 16px;
   }
 
   .rank-card {
-    padding: 24px 16px;
+    padding: 22px 14px;
   }
 
   .rank-icon {
-    width: 120px;
+    width: 110px;
   }
 
   .rank-actions {
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
+  }
+
+  /* customer/goal stacked vertically in narrow left column */
+  .customer-goal-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0;
   }
 
   /* Transform basket sidebar into a bottom sheet on tablet */
@@ -690,39 +704,23 @@ body {
     padding: 16px;
   }
 
-  /* Bottom padding for mobile nav bar */
+  /* Bottom padding so content clears the nav bar */
   .container,
   body {
-    padding-bottom: 64px;
-  }
-
-  /* Tablet only: space below category dropdown, top customer + goal in a row */
-  .category-dropdown {
-    margin-bottom: 28px;
-  }
-
-  .customer-goal-row {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin-top: 0;
-  }
-
-  .customer-goal-row > * {
-    flex: 1;
-    min-width: 0;
+    padding-bottom: 72px;
   }
 }
 
 /* === Responsive: mobile === */
 @media (max-width: 768px) {
-  .top-customer,
-  .community-goal {
+  /* Left column has no useful content on mobile — nav handles categories */
+  .left-column {
     display: none;
   }
 
-  .category-dropdown {
-    margin-bottom: 0;
+  /* Content fills full width */
+  .body {
+    flex-direction: column;
   }
 
   html {
@@ -835,7 +833,7 @@ body {
   }
 
   .rank-store {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 14px;
   }
 

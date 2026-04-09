@@ -115,19 +115,10 @@
 }
 
 /* === Responsive (additive only) === */
-/* Tablet and mobile: dropdown with chevron */
+/* Tablet and mobile: categories accessible via bottom nav — hide the whole block */
 @media (max-width: 1024px) {
-    .category-dropdown-trigger {
-        display: flex;
-    }
-
-    .category-dropdown-content {
+    .category-dropdown {
         display: none;
-        margin-top: 10px;
-    }
-
-    .category-dropdown.category-dropdown--expanded .category-dropdown-content {
-        display: block;
     }
 }
 
